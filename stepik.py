@@ -1,33 +1,24 @@
-from random import *
+def horse_chess(sz):
+    place_chess = input()
+    abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+    x1 = int(place_chess[1])
+    y1 = abc.index(place_chess[0])
+    print(x1)
+    print(y1)
+    matrix = []
+    # заполняем матрицуb6
+    for i in range(sz):
+        rows = ['.' for i in range(sz)]
+        matrix.append(rows)
+        #print(*rows)
+    # перебираем возможные ходы коня
+    for i in range(sz - 1, -1, -1):
+        for j in range(sz - 1, -1, -1):
+            if x1 == i and y1 == j:
+                matrix[i][j] = 'N'
+            if (x1 - i) ** 2 + (y1 - j) ** 2 == 5:
+                matrix[i][j] = '*'
+        print(*matrix[i])
 
-
-answers = ["Бесспорно", "Мне кажется - да", "Пока неясно, попробуй снова", "Даже не думай",
-           "Предрешено", "Вероятнее всего", "Спроси позже", "Мой ответ - нет",
-           "Никаких сомнений", "Хорошие перспективы", "Лучше не рассказывать", "По моим данным - нет",
-           "Можешь быть уверен в этом", "Да", "Сконцентрируйся и спроси опять", "Весьма сомнительно"]
-def welcome():
-    print('Привет Мир, я магический шар, и я знаю ответ на любой твой вопрос.')
-    print('Как тебя зовут?')
-    input_name = input()
-    print(f'Привет, {input_name}')
-
-def input_question():
-    print('Введи свой вопрос!')
-    question = input()
-    if question in ['Давай закончим', 'Хватит', 'Пока', 'Нет', 'Давай спать']:
-        return False, print('Возвращайся если возникнут вопросы!')
-    print(choice(answers))
-    return question
-
-def game():
-    welcome()
-    input_question()
-    while True:
-        print('Хочешь ещё задать вопрос?')
-        one_more_game = input().lower()
-        if one_more_game in ['да', 'д', 'l', 'lf']:
-            input_question()
-        else:
-            return print('Возвращайся если возникнут вопросы!')
-
-game()
+size_table = 8
+horse_chess(size_table)
